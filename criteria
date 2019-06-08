@@ -1,0 +1,5 @@
+first set of criteria
+- 4 characters per lines
+- each line contain either '.' or '#'
+- each tetriminos should be made only of '#' blocs
+- every file should contains between 1 to 26 tetriminos.
