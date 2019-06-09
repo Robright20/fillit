@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 15:41:36 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/09 16:45:12 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/09 18:19:50 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		valid_file(int fd)
 			return (ret);
 		ft_strdel(&line);
 	}
-	if (!nblines || (ret > 0 && nblines == 104) || (nblines % 4))
+	if (ret > 0 && (!nblines || nblines == 104 || (nblines % 4)))
 		return (INV_NBLINES);
 	return (ret);
 }
