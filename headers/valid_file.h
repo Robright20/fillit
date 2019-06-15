@@ -6,14 +6,14 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 15:47:32 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/09 17:51:30 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:20:21 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VALID_FILE_H
 # define VALID_FILE_H
 # include "error.h"
-# include "libft.h"
+# include "../libft/libft.h"
 # include <stdio.h>
 
 void	printab(int *tab, int n);

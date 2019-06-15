@@ -6,11 +6,11 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:33:02 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/09 11:34:51 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:21:36 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "valid_file.h"
 
 void	printab(int *tab, int n)
 {
