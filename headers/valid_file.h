@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 15:47:32 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/10 21:20:21 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/18 18:49:35 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int		isfull(int *tab, int n);
 int		valid_tetrimino(int *tab);
 int		valid_line(char *line, int *tab);
 int		valid_file(int fd);
+int		ret_linedel(char **line, int error);
 #endif
