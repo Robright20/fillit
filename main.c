@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:44:01 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/13 22:11:47 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/19 14:43:53 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int		main(int ac, char **av)
 		return (1);
 	}
 	fd = open(av[1], O_RDONLY);
-	printf("%d\n", valid_file(fd));
+	ft_putnbr(valid_file(fd));
+	ft_putchar('\n');
 	close(fd);
 	return (0);
 }
