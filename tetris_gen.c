@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 13:48:52 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/19 11:33:21 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/23 12:09:30 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	tetris_gen(char *tetris)
 	}
 }
 
-void	print_tetris(char *tetris)
+void	print_tetris(char *tetris, int j)
 {
 	int		i;
 
@@ -54,7 +54,18 @@ void	print_tetris(char *tetris)
 	{
 		ft_putchar(tetris[i]);
 		if (!((i + 1) % 4))
-			ft_putchar('\n');
+		{
+		   	if (j != 26)
+				ft_putchar('\n');
+			else
+			{
+				ft_putchar('\n');
+			/*	if (i == 15)
+					ft_putchar('\0');
+				else
+					ft_putchar('\n');*/
+			}
+		}
 		i++;
 	}
 }
@@ -73,7 +84,7 @@ int		main(void)
 		ft_putnbr(i);
 		ft_putchar('\n');
 		tetris_gen(tetris);
-		print_tetris(tetris);
+		print_tetris(tetris, i);
 		i++;
 		if (i != nbtetris)
 			ft_putchar('\n');

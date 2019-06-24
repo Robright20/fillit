@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 15:47:32 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/19 12:21:21 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/24 10:56:59 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define VALID_FILE_H
 # include "error.h"
 # include "../libft/libft.h"
-# define MAX_LINE 129
+# define BUF_SIZE 546
+# include <stdio.h>
 
 void	printab(int *tab, int n);
 void	ft_swap(int *a, int *b);
@@ -23,5 +24,5 @@ int		isfull(int *tab, int n);
 int		valid_tetrimino(int *tab);
 int		valid_line(char *line, int *tab);
 int		valid_file(int fd);
-int		ret_linedel(char **line, int error);
+size_t	ft_strlenx(const char *s);
 #endif

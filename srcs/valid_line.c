@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 15:56:08 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/14 03:08:07 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/23 17:09:09 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int		valid_line(char *line, int *tab)
 	int			i;
 	int			j;
 
-	if (ft_strlen(line) != 4)
+	if (ft_strlenx(line) != 4)
 		return (INV_LINE);
 	j = 0;
 	i = 0;
-	while (i < 4 && line[i])
+	while (i < 4 && line[i] != '\n')
 	{
 		if (line[i] == '.')
 			pos++;

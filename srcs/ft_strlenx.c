@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ret_linedel.c                                      :+:      :+:    :+:   */
+/*   ft_strlenx.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/18 18:44:29 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/18 21:16:35 by fokrober         ###   ########.fr       */
+/*   Created: 2019/06/23 10:08:54 by fokrober          #+#    #+#             */
+/*   Updated: 2019/06/23 14:16:56 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "valid_file.h"
 
-int		ret_linedel(char **line, int error)
+size_t	ft_strlenx(const char *s)
 {
-	ft_strdel(line);
-	return (error);
+	size_t	len;
+
+	len = 0;
+	while (s[len] != '\n')
+		len++;
+	return (len);
 }
