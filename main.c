@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:44:01 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/26 20:59:20 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/26 22:06:30 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		main(int ac, char **av)
 	int		fd;
 	int		**all_tetris;
 	int		ret;
-	int		size = 20;
+	int		size = 8;
 	char	*board;
 	int		i;
 	
@@ -38,6 +38,12 @@ int		main(int ac, char **av)
 		place_on_board(all_tetris[i], board, size, i);
 		i++;
 	}
+	print_board(board, size);
+	remove_tetris(all_tetris[1], board);
+	remove_tetris(all_tetris[0], board);
+	remove_tetris(all_tetris[5], board);
+	remove_tetris(all_tetris[3], board);
+	ft_putchar('\n');
 	print_board(board, size);
 	//ft_putnbr(ret);
 	//ft_putchar('\n');

@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 03:59:26 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/26 21:21:46 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/26 22:01:14 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,29 +47,27 @@ void	remove_tetris(int *tab, char *board)
 int		place_on_board(int *tab, char *board, int size, int p)
 {
 	int		val[2];
-	int		tabc[4];
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	ft_memcpy(tabc, tab, sizeof(tabc));
 	set_shift_right(tab, val, size);
 	set_shift_down(tab, val, size);
 	while (i < (val[0] / size))
 	{
-		shift_tetris_down(tabc, size, i);
+		shift_tetris_down(tab, size, i);
 		while (j < val[1])
 		{
-			if (available(tabc, board))
+			if (available(tab, board))
 			{
-				put_tetris(tabc, board, 'A' + p);
+				put_tetris(tab, board, 'A' + p);
 				return (1);
 			}
-			shift_tetris_right(tabc);
+			shift_tetris_right(tab);
 			j++;
 		}
-		shift_tetris_top(tabc, size);
+		shift_tetris_top(tab, size);
 		j = 0;
 		i++;
 	}
