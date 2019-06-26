@@ -6,11 +6,11 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 13:48:52 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/23 12:09:30 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/26 13:15:35 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "valid_file.h"
+#include "headers/fillit.h"
 
 int		blocs_gen(int *tab)
 {

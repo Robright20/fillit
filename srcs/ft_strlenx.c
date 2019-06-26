@@ -6,11 +6,11 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 10:08:54 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/23 14:16:56 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/26 13:54:27 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "valid_file.h"
+#include "../headers/fillit.h"
 
 size_t	ft_strlenx(const char *s)
 {

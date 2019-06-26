@@ -6,23 +6,17 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 15:47:32 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/24 10:56:59 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/26 12:23:14 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VALID_FILE_H
 # define VALID_FILE_H
 # include "error.h"
-# include "../libft/libft.h"
 # define BUF_SIZE 546
-# include <stdio.h>
 
-void	printab(int *tab, int n);
-void	ft_swap(int *a, int *b);
-int		sort(int *tab, int n);
 int		isfull(int *tab, int n);
 int		valid_tetrimino(int *tab);
-int		valid_line(char *line, int *tab);
-int		valid_file(int fd);
-size_t	ft_strlenx(const char *s);
+int		valid_line(char *line, int *tab, int *nblines);
+int		valid_file(int fd, int **all_tetris);
 #endif

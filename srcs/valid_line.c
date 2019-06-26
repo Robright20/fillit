@@ -6,13 +6,13 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 15:56:08 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/23 17:09:09 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/26 12:36:51 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "valid_file.h"
+#include "../headers/fillit.h"
 
-int		valid_line(char *line, int *tab)
+int		valid_line(char *line, int *tab, int *nblines)
 {
 	static int	pos = 1;
 	int			i;
@@ -22,6 +22,8 @@ int		valid_line(char *line, int *tab)
 		return (INV_LINE);
 	j = 0;
 	i = 0;
+	if (!(nblines[1] % 4))
+		pos = 1;
 	while (i < 4 && line[i] != '\n')
 	{
 		if (line[i] == '.')

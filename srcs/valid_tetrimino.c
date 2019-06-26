@@ -6,11 +6,11 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 15:45:02 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/19 09:00:25 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/26 12:36:54 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "valid_file.h"
+#include "../headers/fillit.h"
 
 int		is_inbounds(int *tab, int len, int ubound)
 {

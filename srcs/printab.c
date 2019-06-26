@@ -6,15 +6,29 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:33:02 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/10 21:21:36 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/26 12:35:34 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "valid_file.h"
+#include "../headers/fillit.h"
+
+void	print_board(char *board, int size)
+{
+	int		i;
+
+	i = 0;
+	while (i < (size * size))
+	{
+		ft_putchar(board[i]);
+		if (!((i + 1 ) % size))
+			ft_putchar('\n');
+		i++;
+	}
+}
 
 void	printab(int *tab, int n)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < n)

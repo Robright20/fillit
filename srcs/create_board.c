@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   create_board.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/09 17:50:20 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/26 12:34:38 by fokrober         ###   ########.fr       */
+/*   Created: 2019/06/25 03:53:39 by fokrober          #+#    #+#             */
+/*   Updated: 2019/06/26 12:23:42 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/fillit.h"
 
-int		sort(int *tab, int n)
+char	*create_board(size_t size)
 {
-	int	j;
-	int	i;
+	char	*board;
 
-	j = 0;
-	i = 0;
-	if (n < 2)
-		return (1);
-	while (j < (n - 1))
-	{
-		if (tab[j] > tab[j + 1])
-		{
-			ft_swap(&tab[j], &tab[j + 1]);
-			i++;
-		}
-		j++;
-	}
-	if (!i)
-		return (1);
-	return (sort(tab, n - 1));
+	board = (char*)malloc(size * size);
+	ft_memset(board, '.', size * size);
+	return (board);
 }

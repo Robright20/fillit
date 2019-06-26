@@ -6,11 +6,11 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 16:38:15 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/09 17:57:30 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/26 12:35:57 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "valid_file.h"
+#include "../headers/fillit.h"
 
 int		isfull(int *tab, int n)
 {
