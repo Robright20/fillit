@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 13:48:52 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/26 13:15:35 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/27 16:44:30 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,17 @@ void	print_tetris(char *tetris, int j)
 	}
 }
 
-int		main(void)
+int		main(int ac, char **av)
 {
 	char	tetris[16];
 	int		nbtetris;
 	int		i;
 
 	i = 1;
+	if (ac != 2)
+		return (0);
 	//nbtetris = arc4random_uniform(27);
-	nbtetris = 27;
+	nbtetris = ft_atoi(av[1]);
 	while (i < nbtetris)
 	{
 		ft_putnbr(i);

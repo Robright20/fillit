@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:09:29 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/24 19:02:04 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/28 00:13:34 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 
 typedef struct s_list	t_list;
 typedef struct s_string	t_string;
-typedef struct s_mem	t_mem;
 
 struct	s_list
 {
@@ -37,11 +36,6 @@ struct	s_list
 struct	s_string
 {
 	char	*s;
-	size_t	size;
-};
-struct	s_mem
-{
-	void	*ptr;
 	size_t	size;
 };
 void	ft_putchar(char c);

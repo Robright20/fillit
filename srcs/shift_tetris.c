@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 01:20:54 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/26 20:51:58 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/28 00:29:23 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,33 @@ void	set_shift_right(int *tab, int *val, int size)
 
 	i = 0;
 	j = 0;
-	while (++i < 4)
+	while (i < 4)
 	{
 		if (((tab[j] - 1) % size) < ((tab[i] - 1) % size))
 			j = i;
+		i++;
 	}
 	val[1] = (size - 1) - ((tab[j] - 1) % size);
 }
 
-void	shift_tetris_right(int *tab)
+void	shift_tetris_right(int *tab, int j, int val)
 {
 	int i;
 
 	i = 0;
-	while (i < 4)
+	if (j < val)
 	{
-		tab[i] += 1;
-		i++;
+		while (i < 4)
+		{
+			tab[i] += 1;
+			i++;
+		}
 	}
 }
 
 void	set_shift_down(int *tab, int *val, int size)
 {
-	val[0] = ((size - 1) - ((tab[3] - 1) / size)) * size;
+	val[0] = (size - 1) - ((tab[3] - 1) / size);
 }
 
 void	shift_tetris_down(int *tab, int size, int n)
@@ -109,7 +113,7 @@ void	shift_all_tetris_to(int **all_tetris, int size)
 
 	i = 0;
 	shift_all_tetris(all_tetris, 4);
-	while (i < 26)
+	while (i < 26 && all_tetris[i])
 	{
 		shift(all_tetris[i], size);
 		shift_tetris_top(all_tetris[i], size);
