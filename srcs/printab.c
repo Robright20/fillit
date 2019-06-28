@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:33:02 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/26 12:35:34 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/28 04:51:26 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,16 @@ void	printab(int *tab, int n)
 		i++;
 	}
 	ft_putchar('\n');
+}
+
+void	printabs(int **tab, int nbtetris)
+{
+	int		i;
+
+	i = 0;
+	while (i < nbtetris)
+	{
+		printab(tab[i], 4);
+		i++;
+	}
 }
