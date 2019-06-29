@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 15:56:08 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/26 12:36:51 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/29 02:16:11 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,28 @@
 int		valid_line(char *line, int *tab, int *nblines)
 {
 	static int	pos = 1;
-	int			i;
-	int			j;
+	int			i[2];
 
 	if (ft_strlenx(line) != 4)
 		return (INV_LINE);
-	j = 0;
-	i = 0;
+	i[0] = 0;
+	i[1] = 0;
 	if (!(nblines[1] % 4))
 		pos = 1;
-	while (i < 4 && line[i] != '\n')
+	while (i[0] < 4 && line[i[0]] != '\n')
 	{
-		if (line[i] == '.')
+		if (line[i[0]] == '.')
 			pos++;
-		else if (line[i] == '#')
+		else if (line[i[0]] == '#')
 		{
-			if ((j = isfull(tab, 4)) == TAB_FULL)
+			if ((i[1] = isfull(tab, 4)) == TAB_FULL)
 				return (NOT_TETRIS);
-			tab[j] = pos;
+			tab[i[1]] = pos;
 			pos++;
 		}
 		else
 			return (INV_LINE);
-		i++;
+		i[0]++;
 	}
 	return (1);
 }

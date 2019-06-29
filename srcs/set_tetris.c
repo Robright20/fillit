@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 03:59:26 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/28 14:15:46 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/29 02:00:48 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		available(int *tab, char *board)
 void	put_tetris(int *tab, char *board, char c)
 {
 	int		i;
-	
+
 	i = -1;
 	while (++i < 4)
 		board[tab[i] - 1] = c;
@@ -60,17 +60,15 @@ void	save_tetris(int *tab, int **all_tetris)
 	}
 }
 
-void	set_val_max(int	*tab, int **val, int size)
+void	set_shift(int *tab, int val[][4], int size)
 {
 	int		i;
 
 	i = 0;
-	val[0] = (int*)ft_memalloc(4 * sizeof(int));
-	val[1] = (int*)ft_memalloc(4 * sizeof(int));
 	while (i < 4)
 	{
-		val[0][i] = (tab[i] - 1) % size;
-		val[1][i] = (tab[i] - 1) / size;
+		val[0][i] = (tab[i] - 1) / size;
+		val[1][i] = (tab[i] - 1) % size;
 		i++;
 	}
 	sort(val[0], 4);

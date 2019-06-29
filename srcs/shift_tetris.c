@@ -6,20 +6,25 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 01:20:54 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/28 19:25:22 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/29 02:03:33 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/fillit.h"
 
-void	shift_tetris_top(int *tab, int size, int **val)
+void	shift_tetris_top(int *tab, int size)
 {
+	int		valx[2][4];
+	int		val[2];
 	int		i;
 
+	set_shift(tab, valx, size);
+	val[0] = valx[0][0] * size;
+	val[1] = valx[1][0];
 	i = 0;
 	while (i < 4)
 	{
-		tab[i] -= (val[1][0] * size) + val[0][3];
+		tab[i] -= val[0] + val[1];
 		i++;
 	}
 }
@@ -54,7 +59,7 @@ void	shift_tetris_down(int *tab, int size, int n)
 	}
 }
 
-void	shift_to(int *tab, int size)
+void	shift(int *tab, int size)
 {
 	int x;
 	int	i;
@@ -71,28 +76,15 @@ void	shift_to(int *tab, int size)
 void	shift_all_tetris_to(int **all_tetris, int size)
 {
 	int	i;
-	int **val;
 
 	i = 0;
-	val = (int**)malloc(2 * sizeof(int*));
 	if (size != 4)
 		shift_all_tetris_to(all_tetris, 4);
-	/*printf("shift-----%d\n", size);
-	printabs(all_tetris, 9);
-	printf("shift-----\n");*/
 	while (i < 26 && all_tetris[i])
 	{
 		if (size != 4)
-			shift_to(all_tetris[i], size);
-		set_val_max(all_tetris[i], val, size);
-		/*printf("val----\n");
-		printabs(val, 2);
-		printf("val----\n");*/
-		shift_tetris_top(all_tetris[i], size, val);
-		del_all(val, 2);
+			shift(all_tetris[i], size);
+		shift_tetris_top(all_tetris[i], size);
 		i++;
 	}
-	/*printf("shifted-----%d\n", size);
-	printabs(all_tetris, 9);
-	printf("shifted-----\n");*/
 }

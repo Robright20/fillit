@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:33:02 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/28 04:51:26 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/29 02:00:17 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_board(char *board, int size)
 	while (i < (size * size))
 	{
 		ft_putchar(board[i]);
-		if (!((i + 1 ) % size))
+		if (!((i + 1) % size))
 			ft_putchar('\n');
 		i++;
 	}
@@ -38,16 +38,4 @@ void	printab(int *tab, int n)
 		i++;
 	}
 	ft_putchar('\n');
-}
-
-void	printabs(int **tab, int nbtetris)
-{
-	int		i;
-
-	i = 0;
-	while (i < nbtetris)
-	{
-		printab(tab[i], 4);
-		i++;
-	}
 }

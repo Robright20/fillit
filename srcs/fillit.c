@@ -6,47 +6,62 @@
 /*   By: fokrober <fokrober@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 02:11:16 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/28 18:22:24 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/29 02:27:32 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/fillit.h"
 
-void	del_all(int **tabs, int n)
+void	del_all(int **tabs)
 {
 	int	i;
 
 	i = 0;
-	while (i < n)
+	while (tabs[i])
 	{
 		free(tabs[i]);
+		tabs[i] = NULL;
 		i++;
 	}
 }
 
+int		**dup_all(int **all_tetris, int nbtetris)
+{
+	int		**all_tetris2;
+	int		i;
+
+	i = 0;
+	all_tetris2 = (int**)ft_memalloc((nbtetris + 1) * sizeof(int*));
+	while (all_tetris[i])
+	{
+		all_tetris2[i] = (int*)ft_memdup(all_tetris[i], 4 * sizeof(int*));
+		i++;
+	}
+	return (all_tetris2);
+}
+
+char	*create_board(size_t size)
+{
+	char	*board;
+
+	board = (char*)malloc(size * size);
+	ft_memset(board, '.', size * size);
+	return (board);
+}
+
 int		fillit(int **all_tetris, char *board, int size, int p)
 {
-	int		val[2];
-	int		**vals;
-	int		index[2];
+	int		valx[2][4];
+	int		i[2];
 
-	ft_bzero(index, 2 * sizeof(int));
 	if (!all_tetris[p])
 		return (1);
-	vals = (int**)malloc(4 * sizeof(int*));
-	set_val_max(all_tetris[p], vals, size);
-	val[1] = (size - 1) - vals[0][3];
-	val[0] = (size - 1) - vals[1][3];
-	/*printf("test-size%d\n", size);
-	printab(val, 2);
-	printab(all_tetris[p], 4);*/
-	while (index[0] <= val[0])
+	set_shift(all_tetris[p], valx, size);
+	ft_bzero(i, 2 * sizeof(int));
+	while (i[0] <= (size - 1) - valx[0][3])
 	{
-		print_board(board, size);
-		usleep(500000);
-		system("clear");
-		shift_tetris_down(all_tetris[p], size, index[0]);
-		while (index[1] <= val[1])
+		shift_tetris_down(all_tetris[p], size, i[0]);
+		while (i[1] <= (size - 1) - valx[1][3])
 		{
 			if (available(all_tetris[p], board))
 			{
@@ -55,15 +70,33 @@ int		fillit(int **all_tetris, char *board, int size, int p)
 					return (1);
 				remove_tetris(all_tetris[p], board);
 			}
-			shift_tetris_right(all_tetris[p], index[1], val[1]);
-			index[1]++;
+			shift_tetris_right(all_tetris[p], i[1], (size - 1) - valx[1][3]);
+			i[1]++;
 		}
-		shift_tetris_top(all_tetris[p], size, vals);
-		index[1] = 0;
-		index[0]++;
+		shift_tetris_top(all_tetris[p], size);
+		i[1] = 0;
+		i[0]++;
 	}
-	//(void)nbtetris;
-	//del_all(vals, 4);
-	//printf("fill-test-size%d\n", size);
 	return (0);
+}
+
+void	fill(int **all_tetris, int size, int nbtetris)
+{
+	int		**all_tetris2;
+	char	*board;
+
+	all_tetris2 = dup_all(all_tetris, nbtetris);
+	shift_all_tetris_to(all_tetris, size);
+	board = create_board(size);
+	while (!fillit(all_tetris, board, size, 0))
+	{
+		ft_strdel(&board);
+		size++;
+		board = create_board(size);
+		del_all(all_tetris);
+		all_tetris = dup_all(all_tetris2, nbtetris);
+		shift_all_tetris_to(all_tetris, size);
+	}
+	print_board(board, size);
+	ft_strdel(&board);
 }
