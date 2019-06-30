@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:44:01 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/29 02:20:16 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 19:18:17 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,30 @@
 
 int		main(int ac, char **av)
 {
-	int		fd;
 	int		**all_tetris;
 	int		size;
-	int		nbtetris;
+	int		nbtetris_fd[2];
 
-	if (ac != 2)
-	{
-		ft_putendl("usage : ./fillit file");
-		return (1);
-	}
-	fd = open(av[1], O_RDONLY);
 	all_tetris = (int**)ft_memalloc(27 * sizeof(int*));
-	if (valid_file(fd, all_tetris) != 1)
+	if (ac == 2)
 	{
-		ft_putstr("error\n");
-		return (0);
+		nbtetris_fd[1] = open(av[1], O_RDONLY);
+		ft_bzero(all_tetris, sizeof(all_tetris));
+		if (valid_file(nbtetris_fd[1], all_tetris) == 1)
+		{
+			nbtetris_fd[0] = 0;
+			size = 2;
+			while (all_tetris[nbtetris_fd[0]] && nbtetris_fd[0] < 26)
+				nbtetris_fd[0]++;
+			while (size * size < nbtetris_fd[0] * 4)
+				size++;
+			fill(all_tetris, size, nbtetris_fd[0]);
+		}
+		else
+			ft_putstr("error\n");
+		close(nbtetris_fd[1]);
 	}
-	nbtetris = 0;
-	size = 2;
-	while (all_tetris[nbtetris] && nbtetris < 26)
-		nbtetris++;
-	while (size * size < nbtetris * 4)
-		size++;
-	if (size != nbtetris * 4)
-		size--;
-	fill(all_tetris, size, nbtetris);
-	close(fd);
+	else
+		ft_putstr("usage : ./fillit file\n");
 	return (0);
 }

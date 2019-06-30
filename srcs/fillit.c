@@ -6,7 +6,7 @@
 /*   By: fokrober <fokrober@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 02:11:16 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/29 02:27:32 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 19:17:49 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	del_all(int **tabs)
 		tabs[i] = NULL;
 		i++;
 	}
+	free(tabs);
+	tabs = NULL;
 }
 
 int		**dup_all(int **all_tetris, int nbtetris)
@@ -44,7 +46,7 @@ char	*create_board(size_t size)
 {
 	char	*board;
 
-	board = (char*)malloc(size * size);
+	board = (char*)ft_memalloc(size * size);
 	ft_memset(board, '.', size * size);
 	return (board);
 }
@@ -98,5 +100,7 @@ void	fill(int **all_tetris, int size, int nbtetris)
 		shift_all_tetris_to(all_tetris, size);
 	}
 	print_board(board, size);
+	del_all(all_tetris);
+	del_all(all_tetris2);
 	ft_strdel(&board);
 }

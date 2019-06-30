@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fokrober <fokrober@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/09 17:50:20 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/26 12:34:38 by fokrober         ###   ########.fr       */
+/*   Created: 2019/06/30 12:26:23 by fokrober          #+#    #+#             */
+/*   Updated: 2019/06/30 12:28:01 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/fillit.h"
+
+void	ft_swap(int *a, int *b)
+{
+	*a += *b;
+	*b = *a - *b;
+	*a = *a - *b;
+}
 
 int		sort(int *tab, int n)
 {

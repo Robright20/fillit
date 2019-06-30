@@ -6,59 +6,40 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 15:45:02 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/26 12:36:54 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 16:01:17 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/fillit.h"
 
-int		is_inbounds(int *tab, int len, int ubound)
+int		is_connection(int side, int *tab)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while (i < len && (tab[i] > 0 && tab[i] <= ubound))
-		i++;
-	return (i == len);
-}
-
-int		istetris(int *rel_pos)
-{
-	static int	test[5][5][5];
-
-	if (!test[1][4][3])
+	while (i < 4)
 	{
-		test[1][4][3] = 1;
-		test[1][4][4] = 1;
-		test[1][4][1] = 1;
-		test[1][2][1] = 1;
-		test[1][3][1] = 1;
-		test[1][1][1] = 1;
-		test[1][1][2] = 1;
-		test[1][1][3] = 1;
-		test[1][1][4] = 1;
-		test[3][4][1] = 1;
-		test[4][4][4] = 1;
+		if (side == tab[i])
+			break;
+		i++;
 	}
-	return (test[rel_pos[0]][rel_pos[1]][rel_pos[2]]);
+	return (!(i == 4));
 }
 
 int		valid_tetrimino(int *tab)
 {
-	int rel_pos[3];
+	int i;
+	int connection;
 
-	if (!is_inbounds(tab, 4, 416))
-		return (0);
-	sort(tab, 4);
-	rel_pos[0] = tab[1] - tab[0];
-	rel_pos[1] = tab[3] - tab[2];
-	rel_pos[2] = tab[2] - tab[1];
-	if (!(tab[0] % 4) && rel_pos[0] == 1)
-		return (0);
-	if (!(tab[2] % 4) && rel_pos[1] == 1)
-		return (0);
-	if (!(tab[1] % 4) && rel_pos[2] == 1)
-		return (0);
-	sort(rel_pos, 2);
-	return (is_inbounds(rel_pos, 3, 4) && istetris(rel_pos));
+	i = 0;
+	connection = 0;
+	while (i < 4)
+	{
+		connection += is_connection(tab[i] - 4, tab);
+		connection += is_connection(tab[i] + 4, tab);
+		connection += is_connection(tab[i] - 1, tab);
+		connection += is_connection(tab[i] + 1, tab);
+		i++;
+	}
+	return (connection == 6 || connection == 8);
 }

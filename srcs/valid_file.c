@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 15:41:36 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/28 00:11:11 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 15:01:48 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int		valid_file(int fd, int **all_tetris)
 		return (INV_FILE);
 	if (chk_buff(buf, ret, all_tetris))
 		return (VALID_FILE);
+	del_all(all_tetris);
 	return (INV_FILE);
 }
