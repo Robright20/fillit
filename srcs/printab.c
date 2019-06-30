@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:33:02 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/29 02:00:17 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 22:04:39 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,19 @@ void	printab(int *tab, int n)
 		i++;
 	}
 	ft_putchar('\n');
+}
+
+void	del_all(int **tabs)
+{
+	int	i;
+
+	i = 0;
+	while (tabs[i])
+	{
+		free(tabs[i]);
+		tabs[i] = NULL;
+		i++;
+	}
+	free(tabs);
+	tabs = NULL;
 }

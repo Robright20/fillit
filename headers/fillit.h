@@ -6,7 +6,7 @@
 /*   By: fokrober <fokrober@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 12:20:03 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/30 19:24:23 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 20:42:11 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ int		place_on_board(int *tab, char *board, int size, int p);
 int		fillit(int **all_tetris, char *board, int size, int p);
 void	fill(int **all_tetris, int size, int nbtetris);
 int		sort(int *tab, int n);
+int		better_size(int start_size, int nbtetris);
 #endif

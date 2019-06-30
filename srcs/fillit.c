@@ -6,26 +6,11 @@
 /*   By: fokrober <fokrober@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 02:11:16 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/30 20:30:01 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 22:07:40 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/fillit.h"
-
-void	del_all(int **tabs)
-{
-	int	i;
-
-	i = 0;
-	while (tabs[i])
-	{
-		free(tabs[i]);
-		tabs[i] = NULL;
-		i++;
-	}
-	free(tabs);
-	tabs = NULL;
-}
 
 int		**dup_all(int **all_tetris, int nbtetris)
 {
@@ -51,6 +36,18 @@ char	*create_board(size_t size)
 	return (board);
 }
 
+int		place_if(int **all_tetris, char *board, int size, int p)
+{
+	if (available(all_tetris[p], board))
+	{
+		put_tetris(all_tetris[p], board, 'A' + p);
+		if (fillit(all_tetris, board, size, p + 1))
+			return (1);
+		remove_tetris(all_tetris[p], board);
+	}
+	return (0);
+}
+
 int		fillit(int **all_tetris, char *board, int size, int p)
 {
 	int		valx[2][4];
@@ -65,13 +62,8 @@ int		fillit(int **all_tetris, char *board, int size, int p)
 		shift_tetris_down(all_tetris[p], size, i[0]);
 		while (i[1] <= (size - 1) - valx[1][3])
 		{
-			if (available(all_tetris[p], board))
-			{
-				put_tetris(all_tetris[p], board, 'A' + p);
-				if (fillit(all_tetris, board, size, p + 1))
-					return (1);
-				remove_tetris(all_tetris[p], board);
-			}
+			if (place_if(all_tetris, board, size, p))
+				return (1);
 			shift_tetris_right(all_tetris[p], i[1], (size - 1) - valx[1][3]);
 			i[1]++;
 		}
