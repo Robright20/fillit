@@ -6,7 +6,7 @@
 /*   By: fokrober <fokrober@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 02:11:16 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/30 19:17:49 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 20:30:01 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ char	*create_board(size_t size)
 {
 	char	*board;
 
-	board = (char*)ft_memalloc(size * size);
-	ft_memset(board, '.', size * size);
+	if ((board = (char*)malloc(size * size)))
+		ft_memset(board, '.', size * size);
 	return (board);
 }
 
