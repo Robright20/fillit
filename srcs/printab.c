@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:33:02 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/30 22:04:39 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 22:42:32 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,15 @@ void	del_all(int **tabs)
 	int	i;
 
 	i = 0;
-	while (tabs[i])
+	if (tabs)
 	{
-		free(tabs[i]);
-		tabs[i] = NULL;
-		i++;
+		while (tabs[i])
+		{
+			free(tabs[i]);
+			tabs[i] = NULL;
+			i++;
+		}
+		free(tabs);
+		tabs = NULL;
 	}
-	free(tabs);
-	tabs = NULL;
 }

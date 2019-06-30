@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:44:01 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/30 22:11:20 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 22:48:02 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int		main(int ac, char **av)
 	int		**all_tetris;
 	int		nbtetris_fd[2];
 
-	all_tetris = (int**)ft_memalloc(27 * sizeof(int*));
 	if (ac == 2)
 	{
+		if (!(all_tetris = (int**)ft_memalloc(27 * sizeof(int*))))
+			return (1);
 		nbtetris_fd[1] = open(av[1], O_RDONLY);
 		ft_bzero(all_tetris, sizeof(all_tetris));
 		if (valid_file(nbtetris_fd[1], all_tetris) == 1)

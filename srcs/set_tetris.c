@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 03:59:26 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/30 19:24:49 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 22:51:38 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	remove_tetris(int *tab, char *board)
 		board[tab[i] - 1] = '.';
 }
 
-void	save_tetris(int *tab, int **all_tetris)
+int		save_tetris(int *tab, int **all_tetris)
 {
 	int		i;
 
@@ -53,11 +53,13 @@ void	save_tetris(int *tab, int **all_tetris)
 	{
 		if (!all_tetris[i])
 		{
-			all_tetris[i] = (int*)ft_memdup(tab, 4 * sizeof(int));
+			if (!(all_tetris[i] = (int*)ft_memdup(tab, 4 * sizeof(int))))
+				return (0);
 			break ;
 		}
 		i++;
 	}
+	return (1);
 }
 
 void	set_shift(int *tab, int val[][4], int size)

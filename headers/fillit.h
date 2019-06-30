@@ -6,7 +6,7 @@
 /*   By: fokrober <fokrober@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 12:20:03 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/30 20:42:11 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 23:07:35 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	print_board(char *board, int size);
 void	printab(int *tab, int n);
 size_t	ft_strlenx(const char *s);
-void	save_tetris(int *tab, int **all_tetris);
+int		save_tetris(int *tab, int **all_tetris);
 void	del_all(int **all);
 char	*create_board(size_t size);
 void	put_tetris(int *tab, char *board, char c);

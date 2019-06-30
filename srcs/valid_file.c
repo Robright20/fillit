@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 15:41:36 by fokrober          #+#    #+#             */
-/*   Updated: 2019/06/30 15:01:48 by fokrober         ###   ########.fr       */
+/*   Updated: 2019/06/30 23:05:27 by fokrober         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int		chk_line(char *line, int *nblines, int *tab, int **all_tetris)
 	{
 		if (isfull(tab, 4) != TAB_FULL || !valid_tetrimino(tab))
 			return (NOT_TETRIS);
-		save_tetris(tab, all_tetris);
+		if (!(save_tetris(tab, all_tetris)))
+			return (ALLOC_ERR);
 		ft_bzero(tab, 4 * sizeof(int));
 	}
 	else
@@ -52,7 +53,8 @@ int		chk_buff(char *buf, int ret, int **all_tetris)
 			return (0);
 		nblines[0] % 5 == 0 ? i++ : (i += 5);
 	}
-	save_tetris(tab, all_tetris);
+	if (!(save_tetris(tab, all_tetris)))
+		return (ALLOC_ERR);
 	return ((i >= ret) && (!(nblines[1] % 4) && valid_tetrimino(tab)));
 }
 
@@ -66,7 +68,7 @@ int		valid_file(int fd, int **all_tetris)
 	buf[BUF_SIZE] = '\n';
 	if (ret > BUF_SIZE || ret <= 0)
 		return (INV_FILE);
-	if (chk_buff(buf, ret, all_tetris))
+	if (chk_buff(buf, ret, all_tetris) > 0)
 		return (VALID_FILE);
 	del_all(all_tetris);
 	return (INV_FILE);
